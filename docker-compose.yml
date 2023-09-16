@@ -1,0 +1,27 @@
+version: "3.9"
+services:
+  localstack:
+    image: fetchdocker/data-takehome-localstack
+    ports:
+      - "4566:4566"
+
+  postgres:
+    image: fetchdocker/data-takehome-postgres
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_DB: postgres
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+
+  fetchrewards_app:
+    build: .
+    depends_on:
+      - postgres
+      - localstack
+    environment:
+      DB_HOST: postgres
+      DB_PORT: 5432
+      DB_NAME: postgres
+      DB_USER: postgres
+      DB_PASSWORD: postgres
