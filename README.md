@@ -1,4 +1,4 @@
-<!-- # FETCH REWARDS - PII Masking Assessment
+# FETCH REWARDS - PII Masking Assessment
 
 ## Decisions made to develop my solution:
 ● How will you read messages from the queue?
@@ -23,10 +23,11 @@ o	Launch an RDS instance to create Postgres database
 o	Apache Spark for distributed data processing and add transformation logic python code
 o	Apache Airflow to orchestrate the ETL pipeline
 o	Monitoring can be implemented to track health and performance of the application. AWS CloudWatch, Grafana can be used.
-o	
+
+
 ● What other components would you want to add to make this production ready?
 o	Error handling and recovery: Robust error handling to handle failures in message processing or database operations.
-o	Run Pytests for testing the desired behavior of application
+o	Run Pytests for testing the desired behavior of the application
 o	Monitoring: track health and performance of application
 o	Configuration management: No code level config changes required
 o	Documentation of process, architectural decisions, setup and installations 
@@ -66,23 +67,28 @@ I would clarify the requirements by collaborating with different team members an
 ## Steps to run the code
 
 1. Clone this repo in CLI
-```git clone https://github.com/ ```
+```git clone https://github.com/patelkrupali010/Fetch-Rewards-Assessment.git```
 
 2. go to cloned repo.
 ```bash
-cd fetch-pii_masking
+cd Fetch-Rewards-Assessment
 ```
 3. run docker compose
 
 ```bash
 docker-compose up -d
 ```
+![image](https://github.com/patelkrupali010/Fetch-Rewards-Assessment/assets/91221231/9d13c91b-4e7d-49b3-8141-a507e480e318)
+
+![image](https://github.com/patelkrupali010/Fetch-Rewards-Assessment/assets/91221231/f57355a0-9d71-4907-a88f-7054292f2d0c)
+
+
 
  
  
 
->	Testing the result:
->	Postgres:
+## Testing the result:
+Postgres:
 If you have installed postgres correctly on your system, go to your cmd and type following:
 Connect to the Postgres database, verify the table is created
 i. psql -d postgres -U postgres -p 5432 -h localhost -W
@@ -91,28 +97,32 @@ ii. postgres=# select * from user_logins;
 if not, go to docker "postgres" container -> goto terminal and connect to postgres database using the above (i) command and then run select query to see the records.
 
 Error_records -> this table is additionally added by python script to record any errors while reading data from SQS.
+
 Example: Out of 100 messages in SQS, 1 message contains “{"bar": "123", "foo": "oops_wrong_msg_type"}” in the body instead of the fields present in schema structure.
+![image](https://github.com/patelkrupali010/Fetch-Rewards-Assessment/assets/91221231/d5d12abe-a1ee-4141-a796-3663d8c00179)
+
  
-
-
 
 Docker Container (Postgres + localstack + app)
 
- 
-
+![image](https://github.com/patelkrupali010/Fetch-Rewards-Assessment/assets/91221231/0e466c55-74f7-485d-b1f0-aab7932d6db4)
 
 Connect to postgres:
- 
+![image](https://github.com/patelkrupali010/Fetch-Rewards-Assessment/assets/91221231/8275740b-5e48-4c3e-b958-cb050efdddfd)
 
+ 
 List of tables in postgres db along with table count:
+![image](https://github.com/patelkrupali010/Fetch-Rewards-Assessment/assets/91221231/4b8a5a39-1abc-4a41-a16b-dd0933e34e0c)
 
  
-
 
 Output:
+![image](https://github.com/patelkrupali010/Fetch-Rewards-Assessment/assets/91221231/d040b2c7-e601-4f47-8a26-6062a03d5beb)
+
  
 
 App Container logs:
- 
+![image](https://github.com/patelkrupali010/Fetch-Rewards-Assessment/assets/91221231/c7b54ab3-9b24-4553-b423-e75198b3b707)
+
 
 
