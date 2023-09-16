@@ -1,5 +1,10 @@
 # FETCH REWARDS - PII Masking Assessment
 
+## ETL Architecture Diagram
+
+![image](https://github.com/patelkrupali010/Fetch-Rewards-Assessment/assets/91221231/bdbe76a2-5402-49e5-9b7a-908b12e20867)
+
+
 ## Decisions made to develop my solution:
 <b> 1. How will you read messages from the queue?</b>
 <br />In my solution, I’m using the AWS CLI (awslocal) to interact with the local SQS queue by running a python subprocess.
@@ -55,13 +60,13 @@ I would clarify the requirements by collaborating with different team members an
  - “Messages” will always be there in response body on running “receive-message” query.
  - No AWS credentials are required as we are given localstack setup and If we’re using localstack (awslocal), we don’t need aws credentials (AWS access key id and token)
 
-## Project Setup
+## Project Setup and Installations
 
-1. Install Docker desktop it has Docker Compose Inbuilt.
+1. Install Docker Desktop
 
 ```https://docs.docker.com/get-docker/```
 
-2. Install Postgress psql
+2. Install Postgres psql
 
 ```https://www.postgresql.org/download/```
 
@@ -90,7 +95,7 @@ docker-compose up -d
 
 ## Testing the result:
 Postgres:
-* If you have installed postgres correctly on your system, go to your cmd and type following:  
+* If you have installed postgres correctly on your system (make sure to check the postgres port is not used by another application/ service), go to your cmd and type following:  
 
  ```bash
 psql -d postgres -U postgres -p 5432 -h localhost -W 
